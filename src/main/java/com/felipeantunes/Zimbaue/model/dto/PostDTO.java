@@ -26,12 +26,12 @@ public class PostDTO {
     private UserDTO userDTO;
 
     public Post toPostEntity(){
-        User user2 = UserDTO.toUserEntity(this.getUserDTO());
+        User user = UserDTO.toUserEntity(this.getUserDTO());
         return Post.builder()
                 .title(this.title)
                 .description(this.description)
                 .link(this.link)
-                .user(user2)
+                .user(user)
                 .build();
     }
 

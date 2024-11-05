@@ -1,0 +1,2 @@
+ALTER TABLE enrollment_user_event
+ADD created_at timestamp;
