@@ -14,7 +14,7 @@ public interface IUserDTO {
 
     public LocalDateTime getCreatedAt();
 
-    public Role getRole();
+    public Integer getRole();
 
     public default UserDTO toUserDTO(){
         return UserDTO.builder()
@@ -22,6 +22,7 @@ public interface IUserDTO {
                 .name(getName())
                 .email(getEmail())
                 .createdAt(getCreatedAt())
+                .role(Role.getByCode(getRole()))
                 .build();
     }
 

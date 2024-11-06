@@ -14,7 +14,7 @@ public enum Role {
     private Integer code;
     private String description;
 
-    public Role getByCode(Integer code){
+    public static Role getByCode(Integer code){
         for(Role e: values()){
             if(e.getCode().equals(code)){
                 return e;

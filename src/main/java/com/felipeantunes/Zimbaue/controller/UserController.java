@@ -30,10 +30,4 @@ public class UserController {
         UserDTO userDto = this.userService.getUserById(userId);
         return ResponseEntity.status(HttpStatus.OK).body(userDto);
     }
-
-    @PostMapping
-    public ResponseEntity<User> saveUser(@RequestBody User user) {
-        User createdUser = this.userService.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
-    }
 }
