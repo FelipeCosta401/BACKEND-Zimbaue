@@ -11,12 +11,23 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
-    private ResponseEntity<String> NotFound(NotFoundException ex){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    private ResponseEntity<ExceptionMessage> NotFound(NotFoundException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ExceptionMessage.builder().message(ex.getMessage()).build());
     }
 
     @ExceptionHandler(BadRequestException.class)
-    private ResponseEntity<String> BadRequest(BadRequestException ex){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    private ResponseEntity<ExceptionMessage> BadRequest(BadRequestException ex){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ExceptionMessage.builder().message(ex.getMessage()).build());
+    }
+
+    @ExceptionHandler(Exception.class)
+    private ResponseEntity<ExceptionMessage> BadRequest(Exception ex){
+
+        ex.printStackTrace();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ExceptionMessage.builder().message(ex.getMessage()).build());
     }
 }
