@@ -4,6 +4,7 @@ import com.felipeantunes.Zimbaue.interfaces.IPostDTO;
 import com.felipeantunes.Zimbaue.model.dto.PostDTO;
 import com.felipeantunes.Zimbaue.model.entity.Post;
 import com.felipeantunes.Zimbaue.repository.PostRepository;
+import com.felipeantunes.Zimbaue.repository.UserRepository;
 import com.felipeantunes.Zimbaue.service.exceptions.BadRequestException;
 import com.felipeantunes.Zimbaue.service.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public List<PostDTO> getPostList(){
         List<IPostDTO> iPostDTOList = this.postRepository.getPostList();
@@ -46,7 +50,9 @@ public class PostService {
             throw new BadRequestException("O título não pode ser vazio");
         } else if(postDTO.getUserDTO().getId() == null){
             throw new BadRequestException("Usuário é obrigatório");
-        }else {
+        } else if (!this.userRepository.existsById(postDTO.getUserDTO().getId())){
+           throw new BadRequestException("Usuário não encontrado com esse id");
+        } else {
             Post post = postDTO.toPostEntity();
             Post createdPost = this.postRepository.save(post);
             return this.getPostById(createdPost.getId());
