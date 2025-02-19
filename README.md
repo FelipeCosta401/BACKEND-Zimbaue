@@ -3,8 +3,8 @@
 Esse projeto representa a parte funcional do sistema de gerenciamento de eventos, publicações e contribuições do instituto sem fins lucrativos: Instituto Negro do Zimbaue 
 
 <div style="display: flex; gap: 16px;">
-    <img style="border-radius: 8px;" src="/public/mockups/feed.png" alt="Mockup do Feed" />
-    <img style="border-radius: 8px;" src="/public/mockups/events.png" alt="Mockup dos Eventos" />
+    <img style="border-radius: 8px;" src="../FRONTEND-Zimbaue/public/mockups/feed.png" alt="Mockup do Feed" />
+    <img style="border-radius: 8px;" src="../FRONTEND-Zimbaue/public/mockups/events.png.png" alt="Mockup dos Eventos" />
 </div>
 
 ## Funcionalidades
